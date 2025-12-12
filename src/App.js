@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+import AdminPage from "./AdminPage";
+
+ const api = "https://backendunion.onrender.com"
 
 function App() {
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [me, setMe] = useState(null);
+
+  useEffect(() => {
+    if (!token) return;
+    fetch(`${API}/me`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(r => {
+        if (!r.ok) throw new Error("Auth failed");
+        return r.json();
+      })
+      .then(setMe)
+      .catch(() => {
+        setToken(null);
+        localStorage.removeItem("token");
+      });
+  }, [token]);
+
+  if (!token) return <Login api={API} onLogin={setToken} />;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: 20, fontFamily: "Arial" }}>
+      {me && (
+        <>
+          <h2>Mock Banking App</h2>
+          <p>
+            Logged in as <b>{me.username}</b> ({me.is_admin ? "Admin" : "User"})
+            <button onClick={() => { setToken(null); localStorage.removeItem("token"); }} style={{ marginLeft: 10 }}>
+              Logout
+            </button>
+          </p>
+
+          <Dashboard api={API} token={token} user={me} />
+
+          {me.is_admin && <AdminPage api={API} token={token} />}
+        </>
+      )}
     </div>
   );
 }
