@@ -39,7 +39,10 @@ export default function Dashboard({ api, token, user }) {
 
       {/* HEADER */}
       <div className="bg-white shadow rounded-xl p-6 mb-6">
-        <h2 className="text-2xl font-bold text-blue-700">Welcome to Texan Union Bank</h2>
+        <footer className="text-center mt-12 text-sm text-gray-500">
+  &copy; Texan Union Bank App. All rights reserved.
+</footer>
+
 
         <p className="mt-3 text-gray-700"><b>Name:</b> Mr. Femi Adebayo</p>
         <p className="text-gray-700"><b>Address:</b> {user.address}</p>
