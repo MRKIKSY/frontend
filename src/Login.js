@@ -71,8 +71,8 @@ export default function Login({ api, onLogin }) {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           <p className="font-semibold text-gray-700">Test Accounts:</p>
-          <p>femi / femipass</p>
-          <p>admin / adminpass</p>
+          {/* <p>femi / femipass</p>
+          <p>admin / adminpass</p> */}
         </div>
       </div>
     </div>
