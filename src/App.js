@@ -33,9 +33,7 @@ function App() {
         <>
          <header className="text-center mt-12 text-sm text-gray-500">
   &copy; Texan Union Bank App. All rights reserved.
-</header>
-
-          <p>
+  <p>
             Logged in as <b>{me.username}</b> ({me.is_admin ? "Admin" : "User"})
             <button
               onClick={() => {
@@ -47,6 +45,20 @@ function App() {
               Logout
             </button>
           </p>
+</header>
+
+          {/* <p>
+            Logged in as <b>{me.username}</b> ({me.is_admin ? "Admin" : "User"})
+            <button
+              onClick={() => {
+                setToken(null);
+                localStorage.removeItem("token");
+              }}
+              style={{ marginLeft: 10 }}
+            >
+              Logout
+            </button>
+          </p> */}
 
           <Dashboard api={API} token={token} user={me} />
 
