@@ -31,7 +31,10 @@ function App() {
     <div style={{ padding: 20, fontFamily: "Arial" }}>
       {me && (
         <>
-          <h2>Mock Banking App</h2>
+         <header className="text-center mt-12 text-sm text-gray-500">
+  &copy; Texan Union Bank App. All rights reserved.
+</header>
+
           <p>
             Logged in as <b>{me.username}</b> ({me.is_admin ? "Admin" : "User"})
             <button
