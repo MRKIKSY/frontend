@@ -3,7 +3,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import AdminPage from "./AdminPage";
 
- const api = "https://backendunion.onrender.com"
+const API = "https://backendunion.onrender.com";  // <-- use same case everywhere
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -34,7 +34,13 @@ function App() {
           <h2>Mock Banking App</h2>
           <p>
             Logged in as <b>{me.username}</b> ({me.is_admin ? "Admin" : "User"})
-            <button onClick={() => { setToken(null); localStorage.removeItem("token"); }} style={{ marginLeft: 10 }}>
+            <button
+              onClick={() => {
+                setToken(null);
+                localStorage.removeItem("token");
+              }}
+              style={{ marginLeft: 10 }}
+            >
               Logout
             </button>
           </p>
