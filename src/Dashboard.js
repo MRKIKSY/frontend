@@ -185,7 +185,7 @@ export default function Dashboard({ api, token, user }) {
 
       {/* BANK INFO */}
       <div className="bg-white shadow-xl rounded-2xl p-8 mb-8 text-center w-full max-w-xl">
-        <h1 className="text-3xl font-bold text-blue-700 mb-2">Amsterdam Local Union Bank</h1>
+        <h1 className="text-3xl font-bold text-blue-700 mb-2">Rabobank Amsterdam</h1>
         <p className="text-gray-700 text-lg mb-1"><b>Name:</b> Mrs Maria Kelly Lars</p>
         <p className="text-gray-700 text-lg">
           <b>Address:</b> Keizersgracht 215, 1016 DW Amsterdam, Netherlands
@@ -197,15 +197,15 @@ export default function Dashboard({ api, token, user }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 w-full max-w-3xl">
           <div className="bg-white p-6 rounded-xl shadow border border-gray-200 text-center">
             <h3 className="text-gray-600 font-semibold">Current Balance</h3>
-            <p className="text-3xl font-bold text-blue-700 mt-2">${balance.balance}</p>
+            <p className="text-3xl font-bold text-blue-700 mt-2">€{balance.balance}</p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow border border-gray-200 text-center">
             <h3 className="text-gray-600 font-semibold">Total Credits</h3>
-            <p className="text-2xl font-bold text-green-600 mt-2">${balance.total_credits}</p>
+            <p className="text-2xl font-bold text-green-600 mt-2">€{balance.total_credits}</p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow border border-gray-200 text-center">
             <h3 className="text-gray-600 font-semibold">Total Debits</h3>
-            <p className="text-2xl font-bold text-red-600 mt-2">${balance.total_debits}</p>
+            <p className="text-2xl font-bold text-red-600 mt-2">€{balance.total_debits}</p>
           </div>
         </div>
       )}
