@@ -123,7 +123,6 @@
 // }
 
 
-
 import React, { useState, useEffect } from "react";
 
 export default function Dashboard({ api, token, user }) {
@@ -172,36 +171,39 @@ export default function Dashboard({ api, token, user }) {
   }
 
   return (
-    <div className="p-6">
-      {balance && <h2>Balance: ${balance.balance}</h2>}
+    <div className="p-6 bg-gray-100 min-h-screen">
+      {balance && <h2 className="text-xl font-bold mb-4">Balance: ${balance.balance}</h2>}
 
-      <form onSubmit={withdraw}>
-        <input placeholder="Amount" onChange={e => setAmount(e.target.value)} />
-        <input placeholder="Routing #" onChange={e => setRouting(e.target.value)} />
-        <input placeholder="Account #" onChange={e => setAccount(e.target.value)} />
-        <input placeholder="Check #" onChange={e => setCheck(e.target.value)} />
-        <input placeholder="Reference" onChange={e => setRef(e.target.value)} />
-        <button>Withdraw</button>
+      <form onSubmit={withdraw} className="space-y-2 mb-4">
+        <input placeholder="Amount" value={amount} onChange={e => setAmount(e.target.value)} />
+        <input placeholder="Routing #" value={routing} onChange={e => setRouting(e.target.value)} />
+        <input placeholder="Account #" value={account} onChange={e => setAccount(e.target.value)} />
+        <input placeholder="Check #" value={check} onChange={e => setCheck(e.target.value)} />
+        <input placeholder="Reference" value={ref} onChange={e => setRef(e.target.value)} />
+        <button className="bg-blue-700 text-white px-4 py-2 rounded mt-2">Withdraw</button>
       </form>
 
-      {msg && <p>{msg}</p>}
+      {msg && <p className="text-green-600 font-medium">{msg}</p>}
 
-      <table>
+      <table className="min-w-full border-collapse border border-gray-300">
         <thead>
-          <tr>
-            <th>Date</th><th>Status</th><th>Amount</th><th>Description</th>
+          <tr className="bg-gray-200 text-left">
+            <th className="p-2">Date</th>
+            <th className="p-2">Status</th>
+            <th className="p-2">Amount</th>
+            <th className="p-2">Description</th>
           </tr>
         </thead>
         <tbody>
           {txs.map(t => (
             <tr key={t.id} style={{ fontStyle: t.status === "pending" ? "italic" : "normal" }}>
-              <td>{new Date(t.created_at).toLocaleString()}</td>
-              <td>
-                {t.status === "pending" && <span className="animate-spin">⏳</span>}
+              <td className="p-2">{new Date(t.created_at).toLocaleString()}</td>
+              <td className="p-2">
+                {t.status === "pending" && <span className="animate-spin">⏳ </span>}
                 {t.status.toUpperCase()}
               </td>
-              <td>{t.amount}</td>
-              <td>{t.description}</td>
+              <td className="p-2">${t.amount}</td>
+              <td className="p-2">{t.description}</td>
             </tr>
           ))}
         </tbody>
