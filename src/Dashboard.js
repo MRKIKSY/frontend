@@ -178,7 +178,17 @@ export default function Dashboard({ api, token, user }) {
 
 
   return (
+
+
+    
     <div className="p-6 bg-gray-100 min-h-screen">
+
+      <div className="bg-white shadow rounded-xl p-6 mb-6">
+//         <h2 className="text-2xl font-bold text-blue-700">Amsterdam Local  Union Bank</h2>
+
+//         <p className="mt-3 text-gray-700"><b>Name:</b> Mrs Maria Kelly Lars</p>
+//         <p className="text-gray-700"><b>Keizersgracht 215, 1016 DW Amsterdam, Netherlands</b> {user.address}</p>
+//       </div>
       {balance && <h2 className="text-xl font-bold mb-4">Balance: ${balance.balance}</h2>}
 
       <form onSubmit={withdraw} className="space-y-2 mb-4">
@@ -205,6 +215,11 @@ export default function Dashboard({ api, token, user }) {
           {txs.map(t => (
             <tr key={t.id} style={{ fontStyle: t.status === "pending" ? "italic" : "normal" }}>
               <td className="p-2">{new Date(t.created_at).toLocaleString()}</td>
+              {/* <td className="p-2">
+                {t.status === "pending" && <span className="animate-spin">⏳ </span>}
+                {t.status.toUpperCase()}
+              </td> */}
+
               <td className="p-2">
                 {t.status === "pending" && <span className="animate-spin">⏳ </span>}
                 {t.status.toUpperCase()}
