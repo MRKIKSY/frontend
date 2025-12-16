@@ -101,18 +101,19 @@ export default function AdminPage({ api, token }) {
           </tr>
         </thead>
         <tbody>
-          {pendingTxs.map(tx => (
-            <tr key={tx.id}>
-              <td>{tx.id}</td>
-              <td>{tx.user_id}</td>
-              <td>{tx.amount}</td>
-              <td>{tx.description}</td>
-              <td>
-                <button onClick={() => approve(tx.id)}>Approve</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+  {(Array.isArray(pendingTxs) ? pendingTxs : []).map(tx => (
+    <tr key={tx.id}>
+      <td>{tx.id}</td>
+      <td>{tx.user_id}</td>
+      <td>{tx.amount}</td>
+      <td>{tx.description}</td>
+      <td>
+        <button onClick={() => approve(tx.id)}>Approve</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );
