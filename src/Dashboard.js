@@ -181,11 +181,11 @@ export default function Dashboard({ api, token, user }) {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen flex flex-col items-center">
+    <div className="p-4 bg-gray-100 min-h-screen flex flex-col items-center">
 
       {/* BANK INFO */}
       <div className="bg-white shadow-xl rounded-2xl p-8 mb-8 text-center w-full max-w-xl">
-        <h1 className="text-3xl font-bold text-blue-700 mb-2">Rabobank Amsterdam</h1>
+        <h1 className="text-3xl font-bold text-blue-700 mb-2">Amsterdam Local Union Bank</h1>
         <p className="text-gray-700 text-lg mb-1"><b>Name:</b> Mrs Maria Kelly Lars</p>
         <p className="text-gray-700 text-lg">
           <b>Address:</b> Keizersgracht 215, 1016 DW Amsterdam, Netherlands
@@ -214,28 +214,50 @@ export default function Dashboard({ api, token, user }) {
       <div className="bg-white rounded-xl shadow-xl p-6 border border-gray-200 mb-8 w-full max-w-xl">
         <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">Withdraw Funds</h3>
 
-        <form onSubmit={withdraw} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <input
-            className="w-full sm:w-48 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-            value={amount}
-            onChange={e => setAmount(e.target.value)}
-            placeholder="Amount"
-          />
-          <input
-            className="w-full sm:w-48 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-            value={routing}
-            onChange={e => setRouting(e.target.value)}
-            placeholder="Routing #"
-          />
-          <input
-            className="w-full sm:w-48 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-            value={account}
-            onChange={e => setAccount(e.target.value)}
-            placeholder="Account #"
-          />
-          <button className="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition font-semibold">
-            Withdraw
-          </button>
+        <form onSubmit={withdraw} className="flex flex-col gap-4 items-center w-full">
+
+          {/* Row 1 */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <input
+              className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+              placeholder="Amount"
+            />
+            <input
+              className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              value={routing}
+              onChange={e => setRouting(e.target.value)}
+              placeholder="Routing #"
+            />
+            <input
+              className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              value={account}
+              onChange={e => setAccount(e.target.value)}
+              placeholder="Account #"
+            />
+          </div>
+
+          {/* Row 2 */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <input
+              className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              value={check}
+              onChange={e => setCheck(e.target.value)}
+              placeholder="Check #"
+            />
+            <input
+              className="flex-1 px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              value={ref}
+              onChange={e => setRef(e.target.value)}
+              placeholder="Reference"
+            />
+            <button
+              className="bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition font-semibold flex-shrink-0"
+            >
+              Withdraw
+            </button>
+          </div>
         </form>
 
         {msg && <p className="text-green-600 font-medium mt-3 text-center">{msg}</p>}
@@ -268,7 +290,7 @@ export default function Dashboard({ api, token, user }) {
                   </td>
 
                   <td className={`p-3 font-semibold ${t.type === "credit" ? "text-green-600" : "text-red-600"}`}>
-                    ${t.amount}
+                    €{t.amount}
                   </td>
                   <td className="p-3">{t.description}</td>
                 </tr>
@@ -277,6 +299,7 @@ export default function Dashboard({ api, token, user }) {
           </table>
         </div>
       </div>
+
     </div>
   );
 }
