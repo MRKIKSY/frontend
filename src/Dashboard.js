@@ -146,29 +146,36 @@ export default function Dashboard({ api, token, user }) {
   useEffect(load, []);
 
   function withdraw(e) {
-    e.preventDefault();
-    setMsg("");
+  e.preventDefault();
+  setMsg("");
 
-    fetch(`${api}/withdraw`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: parseFloat(amount),
-        routing_number: routing,
-        account_number: account,
-        check_number: check,
-        reference: ref
-      })
-    })
-      .then(r => r.json())
-      .then(d => {
-        setMsg(d.detail);
-        load();
-      });
+  if (!amount || !routing || !account) {
+    setMsg("Amount, routing number, and account number are required.");
+    return;
   }
+
+  fetch(`${api}/withdraw`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      amount: parseFloat(amount),
+      routing_number: routing,
+      account_number: account,
+      check_number: check,
+      reference: ref,
+    }),
+  })
+    .then(r => r.json())
+    .then(d => {
+      setMsg(d.detail);
+      load();
+    })
+    .catch(() => setMsg("Error submitting withdrawal"));
+}
+
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
