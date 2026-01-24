@@ -28,7 +28,7 @@ export default function Login({ api, onLogin }) {
       <div className="bg-white shadow-xl rounded-xl p-10 w-full max-w-md border border-gray-200">
 
         <h1 className="text-3xl font-bold text-blue-700 text-center mb-6">
-          Rabobank Amsterdam
+          Manchester Credit Union Online Banking 
         </h1>
 
         <h2 className="text-lg font-semibold text-gray-800 text-center mb-6">
