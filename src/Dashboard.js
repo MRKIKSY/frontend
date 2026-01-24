@@ -185,10 +185,10 @@ export default function Dashboard({ api, token, user }) {
 
       {/* BANK INFO */}
       <div className="bg-white shadow-xl rounded-2xl p-8 mb-8 text-center w-full max-w-xl">
-        <h1 className="text-3xl font-bold text-blue-700 mb-2">Amsterdam Local Union Bank</h1>
-        <p className="text-gray-700 text-lg mb-1"><b>Name:</b> Mrs Maria Kelly Lars</p>
+        <h1 className="text-3xl font-bold text-blue-700 mb-2">Manchester Credit Union Online Banking</h1>
+        <p className="text-gray-700 text-lg mb-1"><b>Name:</b> Miss Lena Willems</p>
         <p className="text-gray-700 text-lg">
-          <b>Address:</b> Keizersgracht 215, 1016 DW Amsterdam, Netherlands
+          <b>Address:</b> 2  Maybury Street,  Gorton M18 8GP United Kingdom
         </p>
       </div>
 
